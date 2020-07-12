@@ -1,0 +1,559 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}{% endblock %}</title>
+	   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.js"></script>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	{% block css %}
+	{% endblock %}
+</head>
+<body>
+
+	 <header class="largenav">
+   <div>
+        <a href="#" class="ml-2" style="border-radius: 50%;background: rgb(240, 247, 255);"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="ml-2" style="border-radius: 50%;background: rgb(240, 247, 255);"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="ml-2" style="border-radius: 50%;background: rgb(240, 247, 255);"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="ml-2" style="border-radius: 50%;background: rgb(240, 247, 255);"><i class="fab fa-pinterest-p"></i></a>
+   </div>
+   <div>
+     <img src="{% static 'image/logo2.png' %}" class="img-fluid" width="200px">
+   </div>
+   <div>
+     <a href="/mywishlist/">  <i class="fa fa-heart mr-4 mywishitems"></i></a>
+         <i class="fa fa-search mr-4 searchicon"></i>
+ <a href="/myproducts/"> <i class="fa fa-shopping-bag mybagitems"></i></a>
+   </div>
+ </header>
+ <header class="smallnav px-3 py-3">
+    <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+   <div>
+     <img src="{% static 'image/logo2.png' %}"  width="200px">
+   </div>
+   <div>
+   <a href="/mywishlist/">  <i class="fa fa-heart mr-4 mywishitems"></i></a>
+      <i class="fa fa-search mr-3 searchicon" ></i>
+    <a href="/myproducts/"> <i class="fa fa-shopping-bag mybagitems"></i></a>
+   </div>
+   
+ </header>
+ <div class="mymodal p-md-3">
+
+ <span style="font-size: 40px; line-height: 20px;cursor: pointer;" class="py-0 text-light closesearch">&times;</span>
+ <div style="display: flex;justify-content: space-around;align-items: center;">
+ 	<form class="form-inline" action="/">
+ 		<div class="form-group">
+ 	<input type="search" name="searchitem" class="form-control mx-2">
+ 	<input type="submit" name="search" class="btn btn-outline-light mt-sm-0 mt-2">
+ </div>
+ </form>
+</div>
+
+ </div>
+ <section class="sidebar" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-hide-large"
+  onclick="w3_close()">&times;</button>
+  <div class="smallmenuitems" >
+    <p>
+ <div class="bg-light py-1 text-dark mx-2"  data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample" style="cursor: pointer;">
+    Beach and Pool
+  </div>
+</p>
+<div class="collapse" id="collapseExample1">
+  <ul>
+   
+    <li>Water toys</li>
+    <li>winter games</li>
+    <li>Toys</li>
+ </ul>
+</div>
+    <p>
+  <div class="bg-light py-1 text-dark mx-2"  data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="cursor: pointer;">
+    Beach and Pool
+  </div>
+</p>
+<div class="collapse" id="collapseExample">
+  <ul>
+   
+    <li>Water toys</li>
+    <li>winter games</li>
+    <li>Toys</li>
+ </ul>
+</div>
+    <p>
+   <div class="bg-light py-1 text-dark mx-2"  data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample" style="cursor: pointer;">
+    Beach and Pool
+  </div>
+</p>
+<div class="collapse" id="collapseExample2">
+  <ul>
+   
+    <li>Water toys</li>
+    <li>winter games</li>
+    <li>Toys</li>
+ </ul>
+</div>
+</div>
+   
+ </section>
+ <div class="fixednav">
+  <div>
+     <img src="{% static 'image/logo2.png' %}"  width="200px">
+   </div>
+   <div>
+    <div class="mymenu1 mr-5">
+      <a href="about/" class="p-0 m-0" style="font-size: 15px;font-weight:bold;">About US</a>
+       
+     </div>
+      <div class="mymenu2 mr-5 ">
+      <a href="contact/" class="p-0 m-0" style="font-size: 15px;font-weight:bold;">Contact US</a>
+       
+     </div>
+      <div class="mymenu3 mr-5">
+      <a href="tracker/" class="p-0 m-0" style="font-size: 15px;font-weight:bold;">Tracker</a>
+       
+     </div>
+   </div>
+   <div>
+    <a href="/mywishlist/">  <i class="fa fa-heart mr-4 mywishitems"></i></a>
+    <a href="/myproducts/"> <i class="fa fa-shopping-bag mybagitems"></i></a>
+   </div>
+   
+ </div>
+ <div class="smallfixednav px-3 py-2">
+  <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+  <div>
+     <img src="{% static 'image/logo2.png' %}"  width="200px">
+   </div>
+   <div>
+  <a href="/mywishlist/">  <i class="fa fa-heart mr-4 mywishitems"></i></a>
+     <a href="/myproducts/"> <i class="fa fa-shopping-bag mybagitems"></i></a>
+   </div>
+   
+ </div>
+  {% block content %}
+ {% endblock %}
+     <footer>
+        <div class="wrap">
+            <div class="row m-0">
+                <div class="col-lg-4 col-md-6 my-md-0 mb-5">
+                    <div class="footer-widget  text-center">
+                        <h2>About Us</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et felis quam. Donec
+                            sodales,
+                            magna nec maximus cursus,
+                        </p>
+                        <i class="fas fa-envelope"></i> :abcexample@gmail.com
+
+                    </div>
+                </div>
+                           <div class="col-lg-4 col-md-6 text-center my-md-0 mb-5">
+                    <div>
+                        <h2 class="text-center">Contact</h2>
+                        <div class="contact-address">
+                            <i class="fas fa-map-marker-alt"></i>Address : XYZ street, New Delhi, India. Pin code:
+                            110005
+                        </div>
+                        <div class="contact-number">
+                            <i class="fas fa-phone-square-alt"></i>Phone : +91 9927336268
+                        </div>
+                        <div class="contact-email">
+                            <i class="fas fa-envelope"></i> Email : Example@gmail.com
+                        </div>
+                        <div class="social-widget">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                        </div>
+                    </div>
+                </div>
+               <!--  <div class="col-lg-4 col-md-12 row m-0 p-0 "> -->
+             <!--    <div class="col-md-6 my-md-0 mb-5">
+                    <div class="footer-widget product-widget text-center" >
+                        <h2>Products</h2>
+                        <ul class="m-0 p-0 list-unstyled">
+                            <li><a href="#">Simple Product</a></li>
+                            <li><a href="#">Variable</a></li>
+                            <li><a href="#">On Sale</a></li>
+                            <li><a href="#">Out of Sale</a></li>
+                            <li><a href="#">External Product</a></li>
+                            <li><a href="#">Grouped</a></li>
+                            <li><a href="#">featured video</a></li>
+                        </ul>
+                    </div>
+                </div> -->
+                <div class="col-lg-4 col-md-12">
+                    <div class="footer-widget information-widget  text-center">
+                        <h2 >Informations</h2>
+                        <ul class="m-0 p-0 list-unstyled">
+                            <li><a href="contact/">Contact Us</a></li>
+                            <li><a href="checkout/">My Orders</a></li>
+                            <li><a href="tracker/">Shipping & delivery</a></li>
+                            <li><a href="RE/">Return & Exchange</a></li>
+                            <li><a href="tc/">Terms & Conditions</a></li>
+                            <li><a href="policy/">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- </div> -->
+     
+            </div>
+        </div>
+
+             <p class="text-center bg-light text-primary"><b>Copyright © 2018, Kidz WordPress Theme </b></p>
+      
+    </footer>
+
+  <script type="text/javascript">
+    $('.owl-new').owlCarousel({
+    loop:true,
+    margin:10,
+    center:false,
+    items:1,
+    center:true,
+  
+    dots:false,
+    nav:false,
+    navigation:false,
+    navText:["<i class=' fa fa-arrow-circle-left' style='font-size:30px;color:rgb(6, 71, 52);'></i>","<i class=' fa fa-arrow-circle-right' style='font-size:30px;color:rgb(6, 71, 52);'></i>"],
+
+    responsive:{
+        400:{
+            items:3
+        },
+        1200:{
+          items:5
+        }
+    
+    }
+});
+  </script>
+    <script type="text/javascript">
+    $('.owl-carousel').owlCarousel({
+    loop:false,
+    margin:10,
+    center:false,
+    items:1,
+  
+    dots:false,
+    nav:true,
+    navigation:true,
+    navText:["<i class=' fa fa-arrow-circle-left' style='font-size:30px;color:rgb(6, 71, 52);'></i>","<i class=' fa fa-arrow-circle-right' style='font-size:30px;color:rgb(6, 71, 52);'></i>"],
+
+    responsive:{
+      500:{
+        items:2
+      },
+        800:{
+            items:3
+        },
+        1200:{
+          items:4
+        }
+    
+    }
+});
+  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.js"></script>
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+ 
+      allowTouchMove:true,
+           fadeEffect: {
+    crossFade: true
+  },
+      
+   
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        type:'bullets'
+      },
+      mousewheel: true,
+      keyboard: true,
+    });
+  </script>
+  <script type="text/javascript">
+    function w3_open() {
+      // Array.from(document.getElementsByClassName('collapse')).map(elem=>{elem.style.display="block"});
+  document.getElementById("mySidebar").style.width = "300px";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.width = "0px";
+   // Array.from(document.getElementsByClassName('collapse')).map(elem=>{elem.style.display="none"});
+}
+    window.addEventListener('scroll',ShowScroll);
+    function ShowScroll(){
+      console.log(this.scrollY)
+      if(this.scrollY>180)
+      {
+        document.getElementsByClassName('smallfixednav')[0].style.display="flex";
+        document.getElementsByClassName('fixednav')[0].classList.remove('d-none');
+         document.getElementsByClassName('fixednav')[0].classList.add('d-flex');
+        
+      }
+      else
+      {
+         document.getElementsByClassName('smallfixednav')[0].style.display="none";
+          document.getElementsByClassName('fixednav')[0].classList.remove('d-flex');
+          document.getElementsByClassName('fixednav')[0].classList.add('d-none');
+
+      }
+    }
+
+//     function openCity(evt, cityName) {
+//   // Declare all variables
+//   var i, tabcontent, tablinks;
+
+//   // Get all elements with class="tabcontent" and hide them
+//   tabcontent = document.getElementsByClassName("tabcontent");
+//   for (i = 0; i < tabcontent.length; i++) {
+//     tabcontent[i].style.display = "none";
+//   }
+
+//   // Get all elements with class="tablinks" and remove the class "active"
+//   tablinks = document.getElementsByClassName("tablinks");
+//   for (i = 0; i < tablinks.length; i++) {
+//     tablinks[i].className = tablinks[i].className.replace(" active", "");
+//   }
+
+//   // Show the current tab, and add an "active" class to the button that opened the tab
+//   document.getElementById(cityName).style.display = "flex";
+//   evt.currentTarget.className += " active";
+// }
+// document.getElementById('activetab').classList.add('active');
+
+	Array.from(document.getElementsByClassName('searchicon')).map(elem=>elem.addEventListener('click',function(){
+	document.getElementsByClassName('mymodal')[0].style.display="block";
+}));
+document.getElementsByClassName('closesearch')[0].addEventListener('click',function(){
+	document.getElementsByClassName('mymodal')[0].style.display="none";
+})
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+  <script type="text/javascript">
+      var wishlist=JSON.parse(localStorage.getItem('mywish'));
+       if(wishlist==null || wishlist==undefined)
+          {
+            wishlist={}
+            x=0
+
+          }
+          else
+          {
+           
+            Array.from(document.getElementsByClassName('mywishitems')).map(elem=>elem.innerHTML=Object.keys(wishlist).length);
+            var keys=Object.keys(wishlist);
+            }
+       var cart=JSON.parse(localStorage.getItem('mycart'));
+     
+       
+          if(cart==null || cart==undefined)
+          {
+            cart={}
+            x=0
+
+          }
+          else
+          {
+            Array.from(document.getElementsByClassName('mybagitems')).map(function(elem){
+             elem.innerHTML=Object.keys(cart).length;
+            }) ;
+            document.getElementsByClassName('mybagitems')[0].innerHTML=Object.keys(cart).length;
+            var keys=Object.keys(cart);
+          
+               Array.from(document.getElementsByClassName('addtocart')).map((elem)=>{
+                  for(i=0;i<keys.length;i++)
+            {
+              if(elem.getAttribute('data-prodid') == keys[i])
+              {
+                elem.innerHTML=`<button class="dec">-</button><span class="px-3 prodquantity" testprodid="${keys[i]}" style="font-weight: bolder" >${cart[keys[i]]}</span><button class="inc">+</button>`
+              }
+              }
+               });
+            }
+
+          
+        //  Array.from(document.getElementsByClassName('dechome')).map(elem=>elem.addEventListener('click'),DecHome);
+
+
+               Array.from(document.getElementsByClassName('addtocart')).map((elem)=>elem.addEventListener('click',AddToCart));
+
+          function AddToCart(e)
+          {
+alert("add to cart")
+ prod_id=this.getAttribute('data-prodid');
+            //     if(this.tagName == "P")
+            // {
+            //   if(cart[prod_id] == undefined){
+                 
+            //   }
+            //   // else{
+            //   //   alert("Add to cart")
+            //   //   alert(cart[prod_id])
+            //   //  this.innerHTML=`<button class="dec">-</button><span class="px-3 prodquantity" testprodid="${prod_id}" style="font-weight: bolder" >${cart[prod_id]+1}</span><button class="inc">+</button>`
+            //   // }
+            // }
+
+          
+      
+             
+    
+                  if(cart[prod_id] === undefined )
+           {
+            cart[prod_id]=1
+             this.innerHTML=`<button class="dec">-</button><span class="px-3 prodquantity" testprodid="${prod_id}" style="font-weight: bolder" >1</span><button class="inc">+</button>`
+            //add_success="<b class='px-4 py-2 text-success table-success'>product added to the cart</b>";
+           }
+           // else
+           // {
+           //  if(e.target.classList.contains('dec'))
+           //  {
+
+           //     cart[prod_id] -=1
+           //     if(cart[prod_id]>=1){
+           //   this.innerHTML=`<button class="dec">-</button><span class="px-3 prodquantity" testprodid="${prod_id}" style="font-weight: bolder" >${cart[prod_id]}</span><button class="inc">+</button>`
+           // }
+           // else if(cart[prod_id]==0)
+           // {
+           //  this.innerHTML=`<i data-prodid="${prod_id}" style="color:darkcyan;" class="fa fa-shopping-bag"></i>Add To Cart`
+           //  delete cart[prod_id];
+            
+           // }
+           // else
+           // {
+           //  cart[prod_id]+=1;
+           // }
+           //  }
+           //  else if(e.target.classList.contains('inc')){
+           //              cart[prod_id] +=1
+           //   this.innerHTML=`<button class="dec">-</button><span class="px-3 prodquantity" testprodid="${prod_id}" style="font-weight: bolder" >${cart[prod_id]}</span><button class="inc">+</button>`
+           // }
+           //  //add_success="<b class='text-danger px-4 py-2 text-danger table-danger'>product already added to the cart</b>";
+
+           // }
+           console.log(cart);
+              totalitem=Object.keys(cart).length;
+           localStorage.setItem('mycart',JSON.stringify(cart));
+
+         axios.post('/sessionstore/',{
+   "Cart":cart
+  }).then(function(response){
+    
+    // document.getElementsByClassName('message')[0].innerHTML=response.data;
+          Array.from(document.getElementsByClassName('mybagitems')).map(elem=>{elem.innerHTML=totalitem});
+         }).catch(err=>console.log(err));
+    }
+
+  </script>
+    <script type="text/javascript">
+           var prod_quant=[];
+  
+          Array.from(document.getElementsByClassName('dec')).map(elem=>elem.addEventListener('click',Decrement));
+          function Decrement(e)
+          {
+            alert("dec")
+           let temp={};
+           let quant=0
+// console.log(e.target.nextSibling);
+           let prod_id=e.target.nextSibling.getAttribute('testprodid');
+            let quantity=parseInt(e.target.nextSibling.innerHTML);;
+            quantity-=1;
+            console.log(quantity)
+            if(quantity>=1){
+
+              alert(prod_id)
+e.target.nextSibling.innerHTML=quantity
+cart[prod_id]=quantity
+localStorage.setItem('mycart',JSON.stringify(cart));
+         axios.post('/sessionstore/',{
+   "Cart":cart
+  }).then(function(response){
+    
+    // document.getElementsByClassName('message')[0].innerHTML=response.data;
+          Array.from(document.getElementsByClassName('mybagitems')).map(elem=>{elem.innerHTML=totalitem});
+         }).catch(err=>console.log(err));
+// temp['prod_id']=prod_id;
+// temp['quantity']=quantity;
+// quant=quantity
+            }
+//             else
+//             {
+//               temp['prod_id']=prod_id;
+// temp['quantity']=quantity+1;
+// quant=quantity+1
+//             }
+
+
+          }
+
+                    Array.from(document.getElementsByClassName('inc')).map(elem=>elem.addEventListener('click',Increment));
+          function Increment(e)
+          {
+            alert("inc")
+
+          let temp={};
+          let quant=0;
+  
+           // console.log(e.target.previousSibling);
+                let prod_id=e.target.previousSibling.getAttribute('testprodid');
+                console.log(prod_id);
+           let quantity=parseInt(e.target.previousSibling.innerHTML);
+        
+            quantity+=1;
+           
+            if(quantity<=1000){
+e.target.previousSibling.innerHTML=quantity
+alert(prod_id)
+cart[prod_id]=quantity
+localStorage.setItem('mycart',JSON.stringify(cart));
+         axios.post('/sessionstore/',{
+   "Cart":cart
+  }).then(function(response){
+    
+    // document.getElementsByClassName('message')[0].innerHTML=response.data;
+          Array.from(document.getElementsByClassName('mybagitems')).map(elem=>{elem.innerHTML=totalitem});
+         }).catch(err=>console.log(err));
+// temp['prod_id']=prod_id;
+// temp['quantity']=quantity;
+// quant=quantity;
+
+            }
+               }
+// // document.getElementsByClassName('removeprod')[0].addEventListener('click',RemoveLS);
+// function RemoveLS()
+// {
+
+//   var ls=JSON.parse(localStorage.getItem('mycart'));
+//   console.log(ls);
+//   alert(ls)
+// }
+  </script>
+
+  {% block script %}
+  {% endblock %}
+</body>
+</html>

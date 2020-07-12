@@ -34,3 +34,10 @@ class brand(models.Model):
 
 	def __str__(self):
 		return self.brand_name
+
+
+class Contact(models.Model):
+	name=models.CharField(max_length=50,default="")
+	email=models.EmailField(max_length=100)
+	phone_number = models.CharField(max_length=12) # validators should be a list
+	Reason=models.TextField()

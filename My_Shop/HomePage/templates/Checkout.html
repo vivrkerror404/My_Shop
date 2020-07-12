@@ -1,16 +1,32 @@
 {% extends "basic.html" %}
 {% block title%} Checkout - My Awesome Cart{% endblock %}
 {% block content %}
+
+
 <div class="container">
     <div class="col my-4">
         <h2>Step 1 - Checkout - Review Your Cart Items</h2>
         <div class="my-4">
             <ul class="list-group" id="items">
+
+                {% if cartitems|length > 0 %}
+                {% for i in cartitems %}
+             
+
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                     {{i.prod_name}}
+                    <span class="badge badge-primary badge-pill">{% for x,y in quantityid.items %}{% if x == i.product_id %}{{y}}{% endif %}{% endfor %}</span>
+                </li>
+                {% endfor %}
+                {% else %}
+                <p>Your cart is empty, please add some items to your cart before checking out!</p>
+                {% endif %}
+
             </ul>
 
             <nav aria-label="breadcrumb">
   <ol class="breadcrumb mt-3">
-    <li class="breadcrumb-item active" aria-current="page">Your Cart Total Is <b>Rs. <span id="totalPrice"></span></b>. Enter your details below & place your order. Thanks for using my shop!</li>
+    <li class="breadcrumb-item active" aria-current="page">Your Cart Total Is <b>Rs. <span id="totalPrice">{{totalprice}}</span></b>. Enter your details below & place your order. Thanks for using my shop!</li>
   </ol>
 </nav>
 
@@ -77,25 +93,25 @@ console.log(cart);
 var sum = 0;
 var totalPrice = 0;
 
-if ($.isEmptyObject(cart)) {
-    //if object is empty
-    mystr = `<p>Your cart is empty, please add some items to your cart before checking out!</p>`
-    $('#items').append(mystr);
-} else {
-    for (item in cart) {
-        let name = cart[item][1];
-        let qty = cart[item][0];
-        let itemPrice = cart[item][2];
-        sum = sum + qty;
-        totalPrice = totalPrice + qty* itemPrice;
-        mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
-                    ${name}
-                    <span class="badge badge-primary badge-pill">${qty}</span>
-                </li>`
-        $('#items').append(mystr);
-    }
+// if ($.isEmptyObject(cart)) {
+//     //if object is empty
+//     mystr = `<p>Your cart is empty, please add some items to your cart before checking out!</p>`
+//     $('#items').append(mystr);
+// } else {
+//     for (item in cart) {
+//         let name = cart[item][1];
+//         let qty = cart[item][0];
+//         let itemPrice = cart[item][2];
+//         sum = sum + qty;
+//         totalPrice = totalPrice + qty* itemPrice;
+//         mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+//                     ${name}
+//                     <span class="badge badge-primary badge-pill">${qty}</span>
+//                 </li>`
+//         $('#items').append(mystr);
+//     }
 
-}
+// }
 
 document.getElementById('cart').innerHTML = sum;
 document.getElementById('totalPrice').innerHTML = totalPrice;

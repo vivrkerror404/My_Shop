@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Product,offer,bestseller,brand
+from .models import Product,offer,bestseller,brand,Contact
 import json
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
@@ -15,7 +15,16 @@ def Home(request):
 	print(products)
 	return render(request,'Home.html',{"products":products,"offers":offers,"bestsellers":bestsellers,"brands":brands,"category":category})
 
-def Contact(request):
+def MyContact(request):
+	if request.method == "POST":
+		name=request.POST['name']
+		email=request.POST['email']
+		phone=request.POST['phone']
+		desc=request.POST['desc']
+		contact= Contact(name=name,email=email,phone_number=phone,Reason=desc)
+		contact.save()
+		return redirect('/contact/')
+
 	return render(request,'Contact.html')
 
 def RE(request):
@@ -29,8 +38,8 @@ def policy(request):
 
 
 def product(request,prod_id):
-	product = Product.objects.filter(id=prod_id)
-	return render(request,'product.html',{"prod_id":prod_id[0]})
+	product = Product.objects.filter(product_id=prod_id)
+	return render(request,'productDetail.html',{"product":product[0]})
 
 
 def About(request):
@@ -38,7 +47,17 @@ def About(request):
 
 	
 def Checkout(request):
-	return render(request,'Checkout.html')
+	cartitems=request.session['prodid']
+	print(cartitems)
+	totalprice=0
+	product_ids=[]
+	for i,j in cartitems.items():
+		product_ids.append(i)
+	allprods=Product.objects.filter(product_id__in=product_ids)
+	for i in allprods:
+		totalprice+=i.prod_price
+
+	return render(request,'Checkout.html',{"cartitems":allprods,"quantityid":cartitems,"totalprice":totalprice})
 
 
 def Tracker(request):

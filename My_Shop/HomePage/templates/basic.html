@@ -123,7 +123,7 @@
        
      </div>
       <div class="mymenu2 mr-5 ">
-      <a href="contact/" class="p-0 m-0" style="font-size: 15px;font-weight:bold;">Contact US</a>
+      <a href="/contact" class="p-0 m-0" style="font-size: 15px;font-weight:bold;">Contact US</a>
        
      </div>
       <div class="mymenu3 mr-5">
@@ -205,7 +205,7 @@
                     <div class="footer-widget information-widget  text-center">
                         <h2 >Informations</h2>
                         <ul class="m-0 p-0 list-unstyled">
-                            <li><a href="contact/">Contact Us</a></li>
+                            <li><a href="/contact">Contact Us</a></li>
                             <li><a href="checkout/">My Orders</a></li>
                             <li><a href="tracker/">Shipping & delivery</a></li>
                             <li><a href="RE/">Return & Exchange</a></li>
@@ -425,7 +425,7 @@ alert("add to cart")
                   if(cart[prod_id] === undefined )
            {
             cart[prod_id]=1
-             this.innerHTML=`<button class="dec">-</button><span class="px-3 prodquantity" testprodid="${prod_id}" style="font-weight: bolder" >1</span><button class="inc">+</button>`
+             this.innerHTML=`<button class="dec">-</button><span class="px-3 prodquantity" testprodid="${prod_id}" style="font-weight: bolder" >${cart[prod_id]}</span><button class="inc">+</button>`
             //add_success="<b class='px-4 py-2 text-success table-success'>product added to the cart</b>";
            }
            // else

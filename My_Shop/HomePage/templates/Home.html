@@ -516,7 +516,6 @@ Tab conten
  prod_id=this.getAttribute('data-prodid');
              if(wishlist[prod_id] === undefined )
            {
-            alert("added to wishlist")
             wishlist[prod_id]=1
            }
            else
@@ -528,7 +527,6 @@ Tab conten
                     axios.post('/sessionstore/',{
    "Wish":wishlist
   }).then(function(response){
-    alert("Wishlist donw")
     // document.getElementsByClassName('message')[0].innerHTML=response.data;
           Array.from(document.getElementsByClassName('mywishitems')).map(elem=>{elem.innerHTML=totalitem});
          }).catch(err=>console.log(err));

@@ -18,8 +18,8 @@
                <!--  <p>qunatity: <input class="text-center" type="text" name="qunatity" value="1" style="width: 40px;"> Kg</p> -->
                 </div>
                   <ul style="display: inline-block;padding: 0px;margin: 0px;list-style-type: none; ">
-                <li style="display: inline-block;"><button  class="nav-link addtowish" style="border:1px solid darkcyan;"  data-prodid="{{ product.prod_id }}"><i class="fa fa-heart" style="font-size: 25px;color: rgb(30, 122, 97);"></i> <span style="color: darkcyan;">Add To Wishlist</span></button></li>
-                <li style="display: inline-block;"><button  class="nav-link addtocart removewishlist" style="border:1px solid darkcyan;" data-prodid="{{ product.prod_id %>"><i class="fa fa-shopping-bag" style="font-size: 25px;color: rgb(30, 122, 97);" ></i> <span style="color: darkcyan;">Add To Cart</span></button></li>
+                <li style="display: inline-block;"><button  class="nav-link addtowish" style="border:1px solid darkcyan;"  data-prodid="{{ product.product_id }}"><i class="fa fa-heart" data-prodid="{{ product.product_id }}" style="font-size: 25px;color: rgb(30, 122, 97);"></i> <span style="color: darkcyan;" data-prodid="{{ product.product_id }}">Add To Wishlist</span></button></li>
+                <li style="display: inline-block;"><button  class="nav-link addtocart removewishlist" style="border:1px solid darkcyan;" data-prodid="{{ product.product_id }}"><i data-prodid="{{ product.product_id }}" class="fa fa-shopping-bag" style="font-size: 25px;color: rgb(30, 122, 97);" ></i> <span data-prodid="{{ product.product_id }}" style="color: darkcyan;">Add To Cart</span></button></li>
             </ul>
 <br>
 <br><br>
@@ -76,3 +76,46 @@
     </div>
 
     {% endblock %}
+
+    {% block script %}
+
+<script type="text/javascript">
+  var wishlist=JSON.parse(localStorage.getItem('mywish'));
+       if(wishlist==null || wishlist==undefined)
+          {
+            wishlist={}
+            x=0
+
+          }
+          else
+          {
+           
+            Array.from(document.getElementsByClassName('mywishitems')).map(elem=>elem.innerHTML=Object.keys(wishlist).length);
+            var keys=Object.keys(wishlist);
+            }
+  Array.from(document.getElementsByClassName('addtowish')).map(elem=>elem.addEventListener('click',addToWishlist));
+ function addToWishlist(e){
+ prod_id=this.getAttribute('data-prodid');
+             if(wishlist[prod_id] === undefined )
+           {
+        
+            wishlist[prod_id]=1
+           }
+           else
+           {
+            alert("already added to wishlist");
+           }
+           totalitem=Object.keys(wishlist).length;
+           localStorage.setItem('mywish',JSON.stringify(wishlist));
+                    axios.post('/sessionstore/',{
+   "Wish":wishlist
+  }).then(function(response){
+  
+    // document.getElementsByClassName('message')[0].innerHTML=response.data;
+          Array.from(document.getElementsByClassName('mywishitems')).map(elem=>{elem.innerHTML=totalitem});
+         }).catch(err=>console.log(err));
+
+ }
+</script>
+
+{% endblock %}

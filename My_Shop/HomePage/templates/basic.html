@@ -404,7 +404,7 @@ document.getElementsByClassName('closesearch')[0].addEventListener('click',funct
 
           function AddToCart(e)
           {
-alert("add to cart")
+//alert("add to cart")
  prod_id=this.getAttribute('data-prodid');
             //     if(this.tagName == "P")
             // {
@@ -470,12 +470,22 @@ alert("add to cart")
 
   </script>
     <script type="text/javascript">
+
+ document.addEventListener('click',function(e){
+    if(e.target && e.target.classList.contains('inc')){
+          Increment(e)
+     }
+     if(e.target && e.target.classList.contains('dec'))
+     {
+      Decrement(e)
+     }
+ });
            var prod_quant=[];
   
-          Array.from(document.getElementsByClassName('dec')).map(elem=>elem.addEventListener('click',Decrement));
+         // Array.from(document.getElementsByClassName('dec')).map(elem=>elem.addEventListener('click',Decrement));
           function Decrement(e)
           {
-            alert("dec")
+            //alert("dec")
            let temp={};
            let quant=0
 // console.log(e.target.nextSibling);
@@ -485,7 +495,7 @@ alert("add to cart")
             console.log(quantity)
             if(quantity>=1){
 
-              alert(prod_id)
+              //alert(prod_id)
 e.target.nextSibling.innerHTML=quantity
 cart[prod_id]=quantity
 localStorage.setItem('mycart',JSON.stringify(cart));
@@ -510,10 +520,10 @@ localStorage.setItem('mycart',JSON.stringify(cart));
 
           }
 
-                    Array.from(document.getElementsByClassName('inc')).map(elem=>elem.addEventListener('click',Increment));
+                  //  Array.from(document.getElementsByClassName('inc')).map(elem=>elem.addEventListener('click',Increment));
           function Increment(e)
           {
-            alert("inc")
+
 
           let temp={};
           let quant=0;
@@ -527,7 +537,7 @@ localStorage.setItem('mycart',JSON.stringify(cart));
            
             if(quantity<=1000){
 e.target.previousSibling.innerHTML=quantity
-alert(prod_id)
+
 cart[prod_id]=quantity
 localStorage.setItem('mycart',JSON.stringify(cart));
          axios.post('/sessionstore/',{

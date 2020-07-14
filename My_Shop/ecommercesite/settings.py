@@ -18,6 +18,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 APPEND_SLASH=False
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
+CSRF_COOKIE_NAME = "XSRF-TOKEN"
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'ay81k8dlaoql=egb@^0ns*k7a)a%8@17*4@k4m=!yin^#(1lpf'
@@ -25,7 +26,7 @@ SECRET_KEY = 'ay81k8dlaoql=egb@^0ns*k7a)a%8@17*4@k4m=!yin^#(1lpf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
 
 # Application definition

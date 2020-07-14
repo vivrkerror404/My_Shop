@@ -12,7 +12,8 @@ urlpatterns = [
     path('mywishlist/',views.Wishlist),
     path('RE/',views.RE),
     path('tc/',views.tc),
-    path('policy/',views.policy)
+    path('policy/',views.policy),
+    path('listview/',views.ListviewInOrderid)
 
 
 ]
